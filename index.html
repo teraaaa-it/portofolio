@@ -23,6 +23,7 @@
             --accent-color: #3b82f6; /* Biru Tech */
             --accent-glow: rgba(59, 130, 246, 0.4);
             --border-color: #2d333b;
+            --gold-color: #fbbf24; /* Warna tambahan untuk prestasi */
             
             /* Spacing & Layout */
             --container-width: 1100px;
@@ -179,6 +180,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s;
+            display: inline-block;
         }
 
         .btn-primary {
@@ -283,11 +285,6 @@
             border-color: var(--accent-color);
         }
 
-        /* Card 1: About (Span 2 cols) */
-        .card-about {
-            grid-column: span 2;
-        }
-
         .card-icon {
             width: 48px;
             height: 48px;
@@ -311,7 +308,6 @@
             font-size: 1rem;
         }
 
-        /* Card 2: Skill Badge */
         .skill-tag-container {
             display: flex;
             flex-wrap: wrap;
@@ -328,12 +324,79 @@
         }
 
         /* Specific Bento Layouts */
+        .card-about { grid-column: span 2; }
         .card-network { grid-column: span 1; }
         .card-cloud { grid-column: span 1; grid-row: span 2; }
         .card-soft { grid-column: span 1; }
 
         .card-cloud {
             background: linear-gradient(180deg, var(--surface-color) 0%, rgba(59,130,246,0.05) 100%);
+        }
+
+        /* --- ACHIEVEMENTS SECTION (NEW) --- */
+        .achievements-section {
+            padding: var(--section-padding);
+            background: linear-gradient(180deg, var(--bg-color) 0%, rgba(15,17,21,0.5) 100%);
+        }
+
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Kolom sesuai permintaan */
+            gap: 20px;
+        }
+
+        .achievement-card {
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
+        }
+
+        .achievement-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(251, 191, 36, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--gold-color);
+        }
+
+        .achievement-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .achievement-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .achievement-year {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* --- EXPERIENCE SECTION --- */
@@ -437,6 +500,13 @@
         }
 
         /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .bento-grid, .achievement-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .card-about, .card-cloud { grid-column: span 2; }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 flex-direction: column-reverse;
@@ -465,7 +535,7 @@
                 height: 300px;
             }
 
-            .bento-grid {
+            .bento-grid, .achievement-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto;
             }
@@ -478,6 +548,7 @@
             .nav-links {
                 display: none; /* Simplifikasi untuk mobile */
             }
+
         }
     </style>
 </head>
@@ -490,6 +561,7 @@
             <ul class="nav-links">
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#achievements">Prestasi</a></li> <!-- Link Baru -->
                 <li><a href="#experience">Pengalaman</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
@@ -581,8 +653,7 @@
         </div>
     </section>
 
-    
-        <!-- NEW SECTION: ACHIEVEMENTS -->
+    <!-- NEW SECTION: ACHIEVEMENTS -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <h2 class="section-title">Prestasi & Sertifikasi</h2>
@@ -641,6 +712,7 @@
 
             </div>
         </div>
+        
     </section>
 
     <!-- Footer -->
@@ -648,6 +720,7 @@
         <div class="container footer-content">
             <h2>Kontak</h2>
             <p class="card-text" style="max-width: 500px; margin: 0 auto 30px auto;">
+                Tertarik untuk berkolaborasi atau sekadar berdiskusi tentang jaringan? Jangan ragu untuk menghubungi saya.
             </p>
             <div class="social-links">
                 <a href="https://www.linkedin.com/in/padio-jufendra" class="social-link" aria-label="LinkedIn">
