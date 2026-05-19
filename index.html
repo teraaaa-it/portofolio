@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Padio Jufendra - It Enthusiast</title>
+    <title>Padio Jufendra - Network Enthusiast</title>
     <meta name="description" content="Portofolio Padio Jufendra, IT Network Engineer dan Cloud Computing enthusiast.">
     
-    <!-- Google Fonts: Inter untuk tampilan modern dan bersih -->
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,18 +14,16 @@
     <style>
         /* --- CSS VARIABLES & RESET --- */
         :root {
-            /* Warna Tema Gelap Modern */
             --bg-color: #0f1115;
             --surface-color: #181b21;
             --surface-hover: #22262e;
             --text-primary: #ffffff;
             --text-secondary: #9ca3af;
-            --accent-color: #3b82f6; /* Biru Tech */
+            --accent-color: #3b82f6;
             --accent-glow: rgba(59, 130, 246, 0.4);
             --border-color: #2d333b;
-            --gold-color: #fbbf24; /* Warna tambahan untuk prestasi */
+            --gold-color: #fbbf24;
             
-            /* Spacing & Layout */
             --container-width: 1100px;
             --section-padding: 80px 0;
             --radius-md: 12px;
@@ -60,7 +58,6 @@
             list-style: none;
         }
 
-        /* --- UTILITIES --- */
         .container {
             max-width: var(--container-width);
             margin: 0 auto;
@@ -212,7 +209,6 @@
             position: relative;
         }
 
-        /* Abstract Network Visual for Hero */
         .network-circle {
             width: 400px;
             height: 400px;
@@ -255,7 +251,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* --- SKILLS & ABOUT BENTO GRID --- */
+        /* --- BENTO GRID --- */
         .bento-section {
             padding: var(--section-padding);
         }
@@ -276,8 +272,6 @@
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .bento-card:hover {
@@ -323,17 +317,15 @@
             color: var(--text-primary);
         }
 
-        /* Specific Bento Layouts */
         .card-about { grid-column: span 2; }
         .card-network { grid-column: span 1; }
         .card-cloud { grid-column: span 1; grid-row: span 2; }
         .card-soft { grid-column: span 1; }
-
         .card-cloud {
             background: linear-gradient(180deg, var(--surface-color) 0%, rgba(59,130,246,0.05) 100%);
         }
 
-        /* --- ACHIEVEMENTS SECTION (NEW) --- */
+        /* --- ACHIEVEMENTS SECTION (UPDATED CLICKABLE BOX) --- */
         .achievements-section {
             padding: var(--section-padding);
             background: linear-gradient(180deg, var(--bg-color) 0%, rgba(15,17,21,0.5) 100%);
@@ -341,8 +333,27 @@
 
         .achievement-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Kolom sesuai permintaan */
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* Wrapper untuk link agar seluruh kotak bisa diklik */
+        .achievement-link {
+            display: block;
+            height: 100%;
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Pindahkan efek hover ke wrapper link */
+        .achievement-link:hover .achievement-card {
+            transform: translateY(-5px);
+            border-color: var(--gold-color);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
+        }
+
+        .achievement-link:hover .achievement-icon {
+            background: rgba(251, 191, 36, 0.2);
         }
 
         .achievement-card {
@@ -355,48 +366,61 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             position: relative;
             overflow: hidden;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold-color);
-            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.1);
+            min-height: 320px;
+            height: 100%; /* Pastikan card mengisi tinggi link */
         }
 
         .achievement-icon {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             background: rgba(251, 191, 36, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            color: var(--gold-color);
+            margin-bottom: 25px;
+            transition: background 0.3s ease;
+        }
+
+        /* Style untuk gambar agar responsif dan rapi */
+        .achievement-icon img {
+            width: 120%;  
+            height: auto;
+            max-width: 130%; /* Mencegah gambar keluar dari lingkaran */
+            object-fit: contain;
+            display: block;
         }
 
         .achievement-title {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: var(--text-primary);
         }
 
         .achievement-desc {
             font-size: 0.95rem;
             color: var(--text-secondary);
-            margin-bottom: 15px;
+            margin-bottom: auto;
+            text-align: justify;
+            text-justify: inter-word;
+            line-height: 1.7;
+            width: 100%;
         }
 
         .achievement-year {
-            font-size: 0.85rem;
-            font-weight: 600;
+            margin-top: 25px;
+            font-size: 1rem;
+            font-weight: 700;
             color: var(--gold-color);
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
         }
 
         /* --- EXPERIENCE SECTION --- */
@@ -501,10 +525,13 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .bento-grid, .achievement-grid {
+            .bento-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             .card-about, .card-cloud { grid-column: span 2; }
+            .achievement-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -535,7 +562,7 @@
                 height: 300px;
             }
 
-            .bento-grid, .achievement-grid {
+            .bento-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: auto;
             }
@@ -546,9 +573,8 @@
             }
             
             .nav-links {
-                display: none; /* Simplifikasi untuk mobile */
+                display: none;
             }
-
         }
     </style>
 </head>
@@ -561,7 +587,7 @@
             <ul class="nav-links">
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#skills">Keahlian</a></li>
-                <li><a href="#achievements">Prestasi</a></li> <!-- Link Baru -->
+                <li><a href="#achievements">Prestasi</a></li>
                 <li><a href="#experience">Pengalaman</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
@@ -580,7 +606,6 @@
         </div>
         <div class="hero-visual">
             <div class="network-circle">
-                <!-- SVG Icon Network di tengah -->
                 <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
                     <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
                     <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
@@ -593,7 +618,7 @@
         </div>
     </section>
 
-    <!-- About & Skills (Bento Grid Style) -->
+    <!-- About & Skills -->
     <section class="bento-section container" id="about">
         <h2 class="section-title">Tentang & Keahlian</h2>
         
@@ -609,7 +634,7 @@
                 </div>
             </div>
 
-            <!-- Card 2: Cloud Computing (Featured) -->
+            <!-- Card 2: Cloud -->
             <div class="bento-card card-cloud">
                 <div>
                     <div class="card-icon">
@@ -653,32 +678,39 @@
         </div>
     </section>
 
-    <!-- NEW SECTION: ACHIEVEMENTS -->
+    <!-- ACHIEVEMENTS SECTION (FULL CARD CLICKABLE) -->
     <section class="achievements-section" id="achievements">
         <div class="container">
             <h2 class="section-title">Prestasi & Sertifikasi</h2>
             <div class="achievement-grid">
                 
-                <!-- Achievement 1 -->
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <!-- Achievement 1: CCNA -->
+                <!-- Seluruh card dibungkus tag <a> -->
+                <a href="https://www.linkedin.com/posts/padio-jufendra_share-7462070207994437632-oigu?utm_source=share&utm_medium=member_desktop&rcm=ACoAAGOGKI4Ba9dws30-d4QF_JupU8TpBzpFFC4" target="_blank" class="achievement-link" aria-label="Lihat Sertifikat CCNA">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <!-- Pastikan file ccna262626.png ada di folder yang sama dengan file HTML ini -->
+                            <img src="ccna262626.png" alt="Logo CCNA" onerror="this.style.display='none'">
+                        </div>
+                        <h3 class="achievement-title">Sertifikasi CCNA</h3>
+                        <p class="achievement-desc">Lulus ujian Cisco Certified Associate dengan nilai sangat memuaskan. Mampu merancang infrastruktur jaringan yang stabil, aman, dan efisien menggunakan protokol standar industri untuk memastikan konektivitas organisasi berjalan optimal.</p>
+                        <span class="achievement-year">2026</span>
                     </div>
-                    <h3 class="achievement-title">Sertifikasi CCNA</h3>
-                    <p class="achievement-desc">Lulus ujian Cisco Certified Associate dengan nilai sangat memuaskan, Mampu merancang infrastruktur jaringan yang stabil, aman, dan efisien menggunakan protokol standar industri untuk memastikan konektivitas organisasi berjalan optimal .</p>
-                    <span class="achievement-year">2026</span>
-                </div>
+                </a>
 
-                <!-- Achievement 2 -->
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                <!-- Achievement 2: MTCNA -->
+                <!-- Seluruh card dibungkus tag <a>, link sudah diperbaiki -->
+                <a href="https://www.linkedin.com/posts/padio-jufendra_share-7462070157872508929-EDVb?utm_source=share&utm_medium=member_desktop&rcm=ACoAAGOGKI4Ba9dws30-d4QF_JupU8TpBzpFFC4" target="_blank" class="achievement-link" aria-label="Lihat Sertifikat MTCNA">
+                    <div class="achievement-card">
+                        <div class="achievement-icon">
+                            <!-- Pastikan file mtcna logo.png ada di folder yang sama dengan file HTML ini -->
+                            <img src="mtcna logo.png" alt="Logo MTCNA" onerror="this.style.display='none'">
+                        </div>
+                        <h3 class="achievement-title">Sertifikasi MTCNA</h3>
+                        <p class="achievement-desc">Lulus ujian MikroTik Certified Network Associate dengan nilai memuaskan. Mampu melakukan manajemen trafik internet, pengamanan jaringan dari akses ilegal, serta penyediaan layanan internet publik atau kantor yang andal.</p>
+                        <span class="achievement-year">2026</span>
                     </div>
-                    <h3 class="achievement-title">Sertifikasi MTCNA</h3>
-                    <p class="achievement-desc">Lulus ujian MikroTik Certified Network Associate dengan nilai memuaskan, Mampu melakukan manajemen trafik internet, pengamanan jaringan dari akses ilegal, serta penyediaan layanan internet publik/kantor yang andal.</p>
-                    <span class="achievement-year">2026</span>
-                </div>
-
+                </a>
 
             </div>
         </div>
@@ -723,11 +755,10 @@
                 Tertarik untuk berkolaborasi atau sekadar berdiskusi tentang jaringan? Jangan ragu untuk menghubungi saya.
             </p>
             <div class="social-links">
-                <a href="https://www.linkedin.com/in/padio-jufendra" class="social-link" aria-label="LinkedIn">
-                    
+                <a href="https://www.linkedin.com/in/padio-jufendra" class="social-link" target="_blank" aria-label="LinkedIn">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="https://github.com/teraaaa-it" class="social-link" aria-label="GitHub">
+                <a href="https://github.com/teraaaa-it" class="social-link" target="_blank" aria-label="GitHub">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
                 </a>
                 <a href="mailto:padiojufendra2@gmail.com" class="social-link" aria-label="Email">
